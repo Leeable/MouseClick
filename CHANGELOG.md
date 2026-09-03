@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Project `CHANGELOG.md` (Keep a Changelog)
+- MIT `LICENSE` and `THIRD_PARTY_NOTICES.md` for npm / Cargo dependencies
 
 ## [0.1.0] - 2026-09-01
 

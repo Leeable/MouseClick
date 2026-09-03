@@ -132,3 +132,9 @@ git push origin v0.1.0
 3. 尽量用 **F9/F10** 控制录制，避免把 UI 点击录进去
 4. 播放前在 **设置 → 播放** 调整速度与延迟
 5. 遇到异常按 **Esc** 紧急停止
+
+## License
+
+本项目采用 [MIT](LICENSE) 许可证。
+
+第三方开源组件的许可声明见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
