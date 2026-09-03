@@ -535,14 +535,22 @@ export default function App() {
   const canRedoEvents = redoStack.current.length > 0;
 
   return (
-    <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+    <Box
+      sx={{
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        overflow: "hidden",
+      }}
+    >
       <CountdownOverlay open={countdown !== null} seconds={countdown ?? 0} />
 
       <AppBar
-        position="sticky"
+        position="static"
         color="transparent"
         elevation={0}
         sx={{
+          flexShrink: 0,
           backdropFilter: "blur(12px)",
           backgroundColor: "rgba(255,255,255,0.72)",
           borderBottom: "1px solid",
@@ -578,14 +586,24 @@ export default function App() {
       <Box
         sx={{
           flex: 1,
+          minHeight: 0,
           display: "grid",
           gridTemplateColumns: { xs: "1fr", md: "280px 1fr" },
           gap: 2,
           p: 2,
-          minHeight: 0,
+          overflow: "hidden",
         }}
       >
-        <Paper sx={{ p: 2, minHeight: 420 }}>
+        <Paper
+          sx={{
+            p: 2,
+            height: "100%",
+            minHeight: 0,
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           <MacroList
             macros={macros}
             selectedId={selectedId}
@@ -602,14 +620,23 @@ export default function App() {
         <Paper
           sx={{
             p: 2,
+            height: "100%",
+            minHeight: 0,
             display: "flex",
             flexDirection: "column",
             gap: 2,
-            minHeight: 0,
             overflow: "hidden",
           }}
         >
-          <Box sx={{ flex: 1, minHeight: 0, overflow: "auto" }}>
+          <Box
+            sx={{
+              flex: 1,
+              minHeight: 0,
+              overflow: "hidden",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
             <EventTimeline
               events={selected?.events ?? []}
               highlightIndex={status === "playing" ? Math.max(0, eventIndex - 1) : -1}
@@ -624,20 +651,20 @@ export default function App() {
           <Divider sx={{ flexShrink: 0 }} />
           <Box sx={{ flexShrink: 0 }}>
             <ControlBar
-            status={status}
-            loop={selected?.loop ?? { mode: "count", count: 1 }}
-            loopIndex={loopIndex}
-            eventIndex={eventIndex}
-            eventCount={selected?.events.length ?? 0}
-            playback={settings.playback}
-            disabled={!selected}
-            onLoopChange={(loop) => updateSelected((m) => ({ ...m, loop }))}
-            onStartRecord={() => void beginRecording()}
-            onStopRecord={() => void handleStopRecord()}
-            onPauseRecord={() => void handlePauseRecord()}
-            onResumeRecord={() => void handleResumeRecord()}
-            onTogglePlay={() => void handleTogglePlay()}
-          />
+              status={status}
+              loop={selected?.loop ?? { mode: "count", count: 1 }}
+              loopIndex={loopIndex}
+              eventIndex={eventIndex}
+              eventCount={selected?.events.length ?? 0}
+              playback={settings.playback}
+              disabled={!selected}
+              onLoopChange={(loop) => updateSelected((m) => ({ ...m, loop }))}
+              onStartRecord={() => void beginRecording()}
+              onStopRecord={() => void handleStopRecord()}
+              onPauseRecord={() => void handlePauseRecord()}
+              onResumeRecord={() => void handleResumeRecord()}
+              onTogglePlay={() => void handleTogglePlay()}
+            />
           </Box>
         </Paper>
       </Box>

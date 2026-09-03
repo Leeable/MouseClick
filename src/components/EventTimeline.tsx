@@ -129,8 +129,15 @@ export default function EventTimeline({
   }
 
   return (
-    <Stack sx={{ height: "100%" }} spacing={1}>
-      <Stack direction="row" alignItems="center" spacing={1} flexWrap="wrap" useFlexGap>
+    <Stack sx={{ height: "100%", minHeight: 0, overflow: "hidden" }} spacing={1}>
+      <Stack
+        direction="row"
+        alignItems="center"
+        spacing={1}
+        flexWrap="wrap"
+        useFlexGap
+        sx={{ flexShrink: 0 }}
+      >
         <Typography variant="subtitle1" fontWeight={700}>
           事件时间线
         </Typography>
@@ -174,9 +181,11 @@ export default function EventTimeline({
         )}
       </Stack>
 
-      <MacroStatsBar events={events} />
+      <Box sx={{ flexShrink: 0 }}>
+        <MacroStatsBar events={events} />
+      </Box>
 
-      <List dense sx={{ flex: 1, overflow: "auto", py: 0 }}>
+      <List dense sx={{ flex: 1, minHeight: 0, overflow: "auto", py: 0 }}>
         {visibleEvents.map(({ e: event, i: index }) => (
           <ListItem
             key={`${event.t}-${index}`}

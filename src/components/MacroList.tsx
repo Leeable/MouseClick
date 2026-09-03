@@ -47,8 +47,13 @@ export default function MacroList({
   const [recentAnchor, setRecentAnchor] = useState<null | HTMLElement>(null);
 
   return (
-    <Stack sx={{ height: "100%" }} spacing={1.5}>
-      <Stack direction="row" alignItems="center" justifyContent="space-between">
+    <Stack sx={{ height: "100%", minHeight: 0, overflow: "hidden" }} spacing={1.5}>
+      <Stack
+        direction="row"
+        alignItems="center"
+        justifyContent="space-between"
+        sx={{ flexShrink: 0 }}
+      >
         <Typography variant="subtitle1" fontWeight={700}>
           宏列表
         </Typography>
@@ -88,7 +93,7 @@ export default function MacroList({
         ))}
       </Menu>
 
-      <List dense sx={{ flex: 1, overflow: "auto", py: 0 }}>
+      <List dense sx={{ flex: 1, minHeight: 0, overflow: "auto", py: 0 }}>
         {macros.length === 0 && (
           <Typography variant="body2" color="text.secondary" sx={{ px: 1, py: 2 }}>
             还没有宏。点击「新建」开始。

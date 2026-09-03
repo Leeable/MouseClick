@@ -34,9 +34,15 @@ const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: {
+          margin: 0,
+          height: "100vh",
+          overflow: "hidden",
           background:
             "radial-gradient(1200px 600px at 10% -10%, #D9EFE4 0%, transparent 55%), radial-gradient(900px 500px at 100% 0%, #E7EDF5 0%, transparent 50%), #F3F5F4",
-          minHeight: "100vh",
+        },
+        "#root": {
+          height: "100vh",
+          overflow: "hidden",
         },
       },
     },
